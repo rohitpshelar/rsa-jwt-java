@@ -198,7 +198,9 @@ The application automatically generates an RSA key pair (2048-bit) on startup:
 - **Stateless**: No server-side session storage
 - **RSA-256**: Asymmetric encryption for enhanced security
 - **Token Expiration**: Tokens expire after 24 hours
-- **CSRF Protection**: Disabled for stateless REST API
+- **CSRF Protection**: Disabled for stateless REST API (standard practice for JWT-based APIs)
+  - Note: CSRF protection is not needed for stateless JWT APIs that don't use cookies
+  - If serving web pages or using cookies, CSRF protection should be enabled
 - **Password Encryption**: BCrypt password encoding
 
 ## Testing with cURL
