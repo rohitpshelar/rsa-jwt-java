@@ -20,7 +20,8 @@ public class AuthController {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     
-    // Demo users (in production, use a database)
+    // Demo users (in production, use a database with proper user repository)
+    // This is intentionally simplified for demonstration purposes
     private static final Map<String, String> DEMO_USERS = new HashMap<>();
     
     public AuthController(JwtService jwtService, PasswordEncoder passwordEncoder) {

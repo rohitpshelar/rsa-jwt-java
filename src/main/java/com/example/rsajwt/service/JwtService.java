@@ -25,6 +25,9 @@ public class JwtService {
     
     public JwtService() {
         // Generate RSA key pair
+        // NOTE: In production, keys should be persisted and loaded from secure storage
+        // to ensure tokens remain valid across application restarts.
+        // Consider implementing key rotation strategy for enhanced security.
         this.keyPair = Keys.keyPairFor(SignatureAlgorithm.RS256);
         this.privateKey = keyPair.getPrivate();
         this.publicKey = keyPair.getPublic();

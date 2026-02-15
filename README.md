@@ -271,3 +271,40 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Author
 
 Rohit Shelar
+
+## Production Considerations
+
+This is a demonstration application. Before deploying to production, consider the following:
+
+1. **Key Persistence**: The RSA keys are generated on startup. In production:
+   - Store keys in a secure location (e.g., AWS KMS, Azure Key Vault, HashiCorp Vault)
+   - Implement key rotation strategy
+   - Use environment-specific keys
+
+2. **User Management**: Replace the in-memory user store with:
+   - Database-backed user repository (Spring Data JPA)
+   - Integration with identity providers (OAuth2, LDAP, Active Directory)
+   - Proper password policies and account management
+
+3. **Token Storage**: 
+   - Implement token revocation mechanism
+   - Consider refresh tokens for better security
+   - Use secure token storage on client side
+
+4. **Security Enhancements**:
+   - Add rate limiting to prevent brute force attacks
+   - Implement CORS policies for frontend applications
+   - Use HTTPS in production
+   - Add input validation and sanitization
+   - Implement proper error handling without exposing sensitive information
+
+5. **Monitoring and Logging**:
+   - Add structured logging
+   - Implement audit trails
+   - Set up monitoring and alerting
+   - Track authentication failures
+
+6. **Configuration**:
+   - Use environment variables for sensitive data
+   - Implement different profiles (dev, staging, production)
+   - Secure application.properties with Spring Cloud Config or similar
